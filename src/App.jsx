@@ -102,14 +102,7 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+     
       <h1>Rick & Morty</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
@@ -163,8 +156,8 @@ function App() {
         </label>{ Array.isArray(itemsfilter.results) && (
         <div key={itemsfilter.results[count].id}>
           <h2>{itemsfilter.results[count].id} {itemsfilter.results[count].name}</h2>
-          <img src={itemsfilter.results[count].image} alt={itemsfilter.results[count].name} style={{ display: "inline-block" , padding: "10px"}} />
-          <div style={{ display: "inline-block", textAlign: "left", verticalAlign: "top", margin: 0 }}> Species : {itemsfilter.results[count].species}
+          <img class="block_image" src={itemsfilter.results[count].image} alt={itemsfilter.results[count].name} style={{ display: "inline-block" , padding: "10px"}} />
+          <div class="info-card" style={{ display: "inline-block", textAlign: "left", verticalAlign: "top", margin: 0 }}> Species : {itemsfilter.results[count].species}
             <br/>Gender : {itemsfilter.results[count].gender} 
             <br/>Status : {itemsfilter.results[count].status}
             <br/>Location : {itemsfilter.results[count].location.name} 
@@ -173,7 +166,7 @@ function App() {
         {console.log("itemsfilter", itemsfilter)}
 
         { Array.isArray(itemsfilter.results) && itemsfilter.results.map((item) => (
-          <div key={item.id} style={{ display: "inline-block", margin: "10px" }}>
+          <div class="uni-card" key={item.id} style={{ display: "inline-block", margin: "10px" }}>
             <h2>{item.id} {item.name}</h2>
             <img src={item.image} alt={item.name} />
           </div>
