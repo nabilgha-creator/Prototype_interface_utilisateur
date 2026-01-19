@@ -149,3 +149,10 @@ body {
 .filters button {
   margin: 0;                   /* IMPORTANT */
 }
+
+.filters button:hover {
+  cursor: pointer;
+  background-color: yellowgreen;
+  color: black;
+  font-weight: bold;
+} 
