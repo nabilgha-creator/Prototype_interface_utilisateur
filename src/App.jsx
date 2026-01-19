@@ -163,11 +163,12 @@ function App() {
         </label>{ Array.isArray(itemsfilter.results) && (
         <div key={itemsfilter.results[count].id}>
           <h2>{itemsfilter.results[count].id} {itemsfilter.results[count].name}</h2>
-          <img src={itemsfilter.results[count].image} alt={itemsfilter.results[count].name} style={{ display: "inline-block" }} />
-          <p style={{ display: "inline-block", textAlign: "left" }}> Species : {itemsfilter.results[count].species}
-          <br/>Gender : {itemsfilter.results[count].gender} 
-          <br/>Status : {itemsfilter.results[count].status}
-          <br/>Location : {itemsfilter.results[count].location.name} </p>
+          <img src={itemsfilter.results[count].image} alt={itemsfilter.results[count].name} style={{ display: "inline-block" , padding: "10px"}} />
+          <div style={{ display: "inline-block", textAlign: "left", verticalAlign: "top", margin: 0 }}> Species : {itemsfilter.results[count].species}
+            <br/>Gender : {itemsfilter.results[count].gender} 
+            <br/>Status : {itemsfilter.results[count].status}
+            <br/>Location : {itemsfilter.results[count].location.name} 
+          </div>
         </div> )}
         {console.log("itemsfilter", itemsfilter)}
 
