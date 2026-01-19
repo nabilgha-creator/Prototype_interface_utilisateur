@@ -70,9 +70,8 @@ src/
     CharacterCard.jsx
     CharacterDetail.jsx
     loader.jsx        (si utilisé pour l’appel API)
-  hooks/              (optionnel)
-    useCharacters.js  (optionnel)
-```
+)
+
 
 ## Notes techniques
 
