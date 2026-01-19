@@ -99,9 +99,8 @@ function App() {
     setPage(1);
   }, [pagesTotal]);
 
-  const selected = Array.isArray(itemsfilter?.results)
-  ? itemsfilter.results[count]
-  : null;
+  const selected = Array.isArray(itemsfilter?.results)?
+  itemsfilter.results[count]: null;
 
 
 
