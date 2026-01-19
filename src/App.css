@@ -110,17 +110,42 @@ body {
   background-position: center;
 }
 
-label {
+/* Barre des filtres */
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;   /* IMPORTANT : si pas de place, ça va à la ligne */
+  gap: 10px;         /* remplace les margin partout */
+  margin-bottom: 10px;
+}
+
+/* Ton style label, mais en "boîte" propre */
+.filters label {
+  display: inline-flex;        /* IMPORTANT : la box colle au contenu */
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  margin: 0;                   /* IMPORTANT : sinon ça déborde */
+  border-radius: 5px;
+
   color: white;
-  font-size: 1.2em;
+  font-size: 1.05em;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
   box-shadow: yellowgreen 0px 0px 10px;
 }
 
-select {
-  margin-left: 10px;
+/* Le select ne doit plus ajouter de margins */
+.filters select {
+  margin: 0;                   /* IMPORTANT */
   font-size: 1em;
   border-radius: 5px;
-  padding: 5px;
+  padding: 5px 8px;
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
+}
+
+/* Bouton aligné pareil */
+.filters button {
+  margin: 0;                   /* IMPORTANT */
 }
