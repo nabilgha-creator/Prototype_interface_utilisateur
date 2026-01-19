@@ -1,3 +1,6 @@
+import CharacterDetail from "./composants/CharacterDetail";
+import CharacterGrid from "./composants/CharacterGrid";
+
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -33,7 +36,8 @@ function App() {
   const [page, setPage] = useState(1);
   const [pagesTotal, setPagesTotal] = useState(null);
 
-  const [itemsfilter, setItemsfilter] = useState([]);
+  const [itemsfilter, setItemsfilter] = useState({ info: null, results: [] });
+
 
   useEffect(() => {
     async function load() {
@@ -95,6 +99,11 @@ function App() {
     setPage(1);
   }, [pagesTotal]);
 
+  const selected = Array.isArray(itemsfilter?.results)
+  ? itemsfilter.results[count]
+  : null;
+
+
 
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>Erreur: {error}</p>;
@@ -153,28 +162,15 @@ function App() {
                 </option>
               ))}
           </select>
-        </label>{Array.isArray(itemsfilter.results) && (
-          <div key={itemsfilter.results[count].id}>
-            <h2>{itemsfilter.results[count].id} {itemsfilter.results[count].name}</h2>
-            <img src={itemsfilter.results[count].image} alt={itemsfilter.results[count].name} className="block_image" />
-            <div className="info_card"> Species : {itemsfilter.results[count].species}
-              <br />Gender : {itemsfilter.results[count].gender}
-              <br />Status : {itemsfilter.results[count].status}
-              <br />Location : {itemsfilter.results[count].location.name}
-            </div>
-          </div>)}
+        </label>
+        <CharacterDetail character={selected} />
         {console.log("itemsfilter", itemsfilter)}
 
-        {Array.isArray(itemsfilter.results) && itemsfilter.results.map((item, index) => (
-          <div key={item.id} className="uni_card">
-            <button onClick={() => setCount((count) => index)}>
-              <a href="#detail">
-                <h2>{item.id} {item.name}</h2>
-                <img className="taille_image" src={item.image} alt={item.name} />
-              </a>
-            </button>
-          </div>
-        ))}
+      <CharacterGrid
+  results={itemsfilter?.results}
+  onSelectIndex={(index) => setCount(index)}
+    />
+
       </div>
       <form
         onSubmit={(e) => {
