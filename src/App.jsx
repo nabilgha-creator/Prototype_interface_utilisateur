@@ -87,6 +87,7 @@ function App() {
     if (gender) params.set("gender", gender);
     if (species) params.set("species", species);
     setFilter(params.toString());
+    setCount(0);
 
   }, [page, status, gender, species]);
 
@@ -102,11 +103,10 @@ function App() {
 
   return (
     <>
-     
       <h1>Rick & Morty</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => Array.isArray(itemsfilter.results) && (itemsfilter.results.length > count + 1) && setCount((count) => count + 1)}>
+          suivant {count}
         </button>
         <label>
           Status:
@@ -156,8 +156,8 @@ function App() {
         </label>{ Array.isArray(itemsfilter.results) && (
         <div key={itemsfilter.results[count].id}>
           <h2>{itemsfilter.results[count].id} {itemsfilter.results[count].name}</h2>
-          <img class="block_image" src={itemsfilter.results[count].image} alt={itemsfilter.results[count].name} />
-          <div class="info_card" > Species : {itemsfilter.results[count].species}
+          <img src={itemsfilter.results[count].image} alt={itemsfilter.results[count].name} className="block_image" />
+          <div className="info_card"> Species : {itemsfilter.results[count].species}
             <br/>Gender : {itemsfilter.results[count].gender} 
             <br/>Status : {itemsfilter.results[count].status}
             <br/>Location : {itemsfilter.results[count].location.name} 
@@ -165,10 +165,12 @@ function App() {
         </div> )}
         {console.log("itemsfilter", itemsfilter)}
 
-        { Array.isArray(itemsfilter.results) && itemsfilter.results.map((item) => (
-          <div class="uni_card" key={item.id} >
+        { Array.isArray(itemsfilter.results) && itemsfilter.results.map((item,index) => (
+          <div key={item.id} className="uni_card">
+            <button onClick={() => setCount((count) => index)}>
             <h2>{item.id} {item.name}</h2>
-            <img src={item.image} alt={item.name} />
+            <img className="taille_image" src={item.image} alt={item.name} />
+            </button>
           </div>
         )) }
       </div>
